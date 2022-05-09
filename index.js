@@ -1,16 +1,18 @@
 const express = require('express');
-const req = require('express/lib/request');
-const res = require('express/lib/response');
+const conectarDB = require('./config/db');
+//const cors = require("cors");
 
 //creamos servidor
 const app = express();
 
+//conectar a db
+conectarDB();
 
-//ruta principal 
-app.get('/', (req, res) => {
-    res.send('Holis');
-})
+//middleware
+app.use(express.json());
+
+app.use('/api/productos', require('./routes/producto'))
 
 app.listen(4000, () => {
-    console.log('el servidor esta gushi');
+    console.log('el servidor esta working');
 })
