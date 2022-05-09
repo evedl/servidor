@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const ProductoSchema = mongoose.Schema({
-    nombre: {
+    producto: {
         type: String,
         required: true
     },
@@ -24,4 +24,4 @@ const ProductoSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Peoducto', ProductoSchema);
+module.exports = mongoose.model('Producto', ProductoSchema);
