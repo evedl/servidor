@@ -1,19 +1,22 @@
 const mongoose = require('mongoose');
-require('dotenv').config({path: 'variables.env' });
+require('dotenv').config({ path: 'variables.env' });
 
 const conectarDB = async () => {
+
     try {
-        //esperar la conexion 
-        await mongoos.connect(process.env.DB_MONGO, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                useFindAndModify: false
-            })
-            console.log('BD Conectada');
+
+        await mongoose.connect(process.env.DB_MONGO, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            //useFindAndModify: false ya no es soportado por mongoose 6
+        })
+        console.log('BD Conectada');
+        
     } catch (error) {
         console.log(error);
-        process.exit(1); // detenemos la app
+        process.exit(1); // Detenemos la app
     }
+
 }
 
-module.exports = conectarDB;
+module.exports = conectarDB
